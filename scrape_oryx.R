@@ -1,5 +1,5 @@
 #' @title scrape_oryx
-#' @description A simple script for extracting tabular data from Oryx' excellent
+#' @description A simple R script for extracting tabular data from Oryx' excellent
 #'   post detailing materiel lost by all sides in the [Russian invasion of
 #'   Ukraine](https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html).
 #'
