@@ -8,6 +8,7 @@
 #'
 
 #' Setup
+library(renv)
 library(rvest)
 library(dplyr)
 library(tidyr)
