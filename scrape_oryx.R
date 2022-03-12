@@ -19,9 +19,14 @@ library(tibble)
 library(stringr)
 library(readr)
 library(glue)
+library(logr)
 source("R/functions.R")
 
+
+tmp <- file.path("outputfiles", sprintf("scrape_oryx_%s.log", format(Sys.time(), "%Y%m%dT%H%M%S")))
+lf <- log_open(tmp)
 today <- format(Sys.Date(), "%Y-%m-%d")
+
 oryx <- rvest::read_html(
   "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html"
 ) %>% rvest::html_elements("article")
@@ -53,11 +58,13 @@ for (a in seq_along(materiel)) {
 readr::write_csv(data, file=glue::glue("outputfiles/data_{today}.csv"))
 
 data_wide <- data %>%
-  dplyr::select(country, origin, system, status) %>%
+  dplyr::select(origin, system, status) %>%
   dplyr::group_by(origin, system, status) %>%
   dplyr::summarise(count = n())
 
 readr::write_csv(data_wide, file=glue::glue("outputfiles/data_wide_{today}.csv"))
+
+## This code uses a different approach to scrapping the data. It is in some ways less accurate, but hints at a method for data validation.
 
 # data <-
 #   tibble::tibble(
@@ -78,3 +85,8 @@ readr::write_csv(data_wide, file=glue::glue("outputfiles/data_wide_{today}.csv")
 #   data[i, 6] <- extract_counts(materiel, i, "destroyed")
 #   data[i, 7] <- extract_total(materiel, i)
 # }
+
+logr::log_code()
+logr::log_close()
+
+writeLines(readLines(lf))
