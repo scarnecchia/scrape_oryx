@@ -33,6 +33,10 @@ oryx <- rvest::read_html(
 
 materiel <- oryx %>% rvest::html_elements("li")
 
+# Retreive the start position of each country
+country_pos <- materiel %>% rvest::html_text2() %>%
+  # T-64BV is the first row in the tank list and marks the beginning of each country
+  stringr::str_which("T-64BV")
 
 #' Run Program
 data <-
@@ -49,7 +53,7 @@ for (a in seq_along(materiel)) {
   status <- materiel[[a]] %>% rvest::html_elements("a")
   for (b in seq_along(status)) {
     counter = counter + 1
-    data[counter, 1] <- ifelse(a < 138, "Russia", "Ukraine")
+    data[counter, 1] <- ifelse(a < country_pos[2], "Russia", "Ukraine")
     data[counter, 2] <- extract_origin(materiel, b)
     data[counter, 3] <- extract_system(materiel, b)
     data[counter, 4] <- extract_status(status, b)
