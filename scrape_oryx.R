@@ -54,8 +54,8 @@ for (a in seq_along(materiel)) {
   for (b in seq_along(status)) {
     counter = counter + 1
     data[counter, 1] <- ifelse(a < country_pos[2], "Russia", "Ukraine")
-    data[counter, 2] <- extract_origin(materiel, b)
-    data[counter, 3] <- extract_system(materiel, b)
+    data[counter, 2] <- extract_origin(materiel, a)
+    data[counter, 3] <- extract_system(materiel, a)
     data[counter, 4] <- extract_status(status, b)
     data[counter, 5] <- extract_url(status, b)
   }
