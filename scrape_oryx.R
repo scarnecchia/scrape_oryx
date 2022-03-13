@@ -33,6 +33,7 @@ oryx <- rvest::read_html(
 
 materiel <- oryx %>% rvest::html_elements("li")
 
+
 #' Run Program
 data <-
   tibble::tibble(
@@ -48,6 +49,7 @@ for (a in seq_along(materiel)) {
   status <- materiel[[a]] %>% rvest::html_elements("a")
   for (b in seq_along(status)) {
     counter = counter + 1
+    data[counter, 1] <- ifelse(a < 138, "Russia", "Ukraine")
     data[counter, 2] <- extract_origin(materiel, b)
     data[counter, 3] <- extract_system(materiel, b)
     data[counter, 4] <- extract_status(status, b)
@@ -58,8 +60,8 @@ for (a in seq_along(materiel)) {
 readr::write_csv(data, file=glue::glue("outputfiles/data_{today}.csv"))
 
 data_wide <- data %>%
-  dplyr::select(origin, system, status) %>%
-  dplyr::group_by(origin, system, status) %>%
+  dplyr::select(country, system, status) %>%
+  dplyr::group_by(country, system, status) %>%
   dplyr::summarise(count = n())
 
 readr::write_csv(data_wide, file=glue::glue("outputfiles/data_wide_{today}.csv"))
