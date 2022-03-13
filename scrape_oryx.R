@@ -7,7 +7,7 @@
 #' @author Daniel Scarnecchia
 #'
 
-#' Setup
+# Setup
 library(renv)
 library(rvest)
 library(dplyr)
@@ -69,28 +69,6 @@ data_wide <- data %>%
   dplyr::summarise(count = n())
 
 readr::write_csv(data_wide, file=glue::glue("outputfiles/data_wide_{today}.csv"))
-
-## This code uses a different approach to scrapping the data. It is in some ways less accurate, but hints at a method for data validation.
-
-# data <-
-#   tibble::tibble(
-#     country = character(),
-#     origin = character(),
-#     system = character(),
-#     captured = numeric(),
-#     damaged = numeric(),
-#     destroyed = numeric(),
-#     total = numeric()
-#   )
-#
-# for (i in seq_along(materiel)) {
-#   data[i, 2] <- extract_origin(materiel, i)
-#   data[i, 3] <- extract_system(materiel, i)
-#   data[i, 4] <- extract_counts(materiel, i, "captured")
-#   data[i, 5] <- extract_counts(materiel, i, "damaged")
-#   data[i, 6] <- extract_counts(materiel, i, "destroyed")
-#   data[i, 7] <- extract_total(materiel, i)
-# }
 
 logr::log_code()
 logr::log_close()
