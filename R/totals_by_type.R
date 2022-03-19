@@ -1,4 +1,4 @@
-#' totals_by_Type
+#' totals_by_type
 #' @description Gets data by system category.
 #'
 #' @return a tibble
