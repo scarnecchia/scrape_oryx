@@ -23,6 +23,7 @@ scrape_data <- function() {
       origin = character(),
       system = character(),
       status = character(),
+      matID = character(),
       url = character(),
     )
 
@@ -36,9 +37,20 @@ scrape_data <- function() {
       data[counter, 2] <- extract_origin(materiel, a)
       data[counter, 3] <- extract_system(materiel, a)
       data[counter, 4] <- extract_status(status, b)
-      data[counter, 5] <- extract_url(status, b)
+      data[counter, 6] <- extract_url(status, b)
     }
   }
+
+  data <- data %>%
+    dplyr::group_by(country) %>%
+    dplyr::mutate(matID = dplyr::case_when(
+    country == "Russia" ~ glue::glue("7{dplyr::cur_group_rows()}"),
+    country == "Ukraine" ~ glue::glue("380{dplyr::cur_group_rows()}")
+  )) %>%
+    dplyr::mutate(matID = as.numeric(matID)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(status = stringr::str_extract_all(status, "destroyed|captured|abandoned|damaged")) %>%
+    tidyr::unnest_longer(status)
 
   return(data)
 }

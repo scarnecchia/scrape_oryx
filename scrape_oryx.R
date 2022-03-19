@@ -36,6 +36,11 @@ totals_by_system_wide <- totals_by_system %>%
   dplyr::select(country, system, status) %>%
   dplyr::group_by(country, system, status) %>%
   dplyr::summarise(count = n()) %>%
+  tidyr::pivot_wider(names_from=status, values_from=count) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(
+    dplyr::across(where(is.numeric), ~ tidyr::replace_na(.x, 0)),
+  total = destroyed + captured + damaged + abandoned) %>%
   readr::write_csv(.,
                    file = glue::glue("outputfiles/totals_by_system_wide_{today}.csv"))
 
