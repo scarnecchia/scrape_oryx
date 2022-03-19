@@ -1,3 +1,7 @@
+get_data <- function(url, elements) {
+  rvest::read_html(url) %>% rvest::html_elements(elements)
+}
+
 extract_total <- function(indsn, x) {
   total <- indsn[[x]] %>% rvest::html_text2() %>%
     stringr::str_extract("\\d+(?= \\b)") %>%
