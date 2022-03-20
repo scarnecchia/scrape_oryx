@@ -43,14 +43,26 @@ scrape_data <- function() {
 
   data <- data %>%
     dplyr::group_by(country) %>%
-    dplyr::mutate(matID = dplyr::case_when(
-    country == "Russia" ~ glue::glue("7{dplyr::cur_group_rows()}"),
-    country == "Ukraine" ~ glue::glue("380{dplyr::cur_group_rows()}")
-  )) %>%
+    dplyr::mutate(
+      matID = dplyr::case_when(
+        country == "Russia" ~ glue::glue("7{dplyr::cur_group_rows()}"),
+        country == "Ukraine" ~ glue::glue("380{dplyr::cur_group_rows()}")
+      )
+    ) %>%
     dplyr::mutate(matID = as.numeric(matID)) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(status = stringr::str_extract_all(status, "destroyed|captured|abandoned|damaged")) %>%
     tidyr::unnest_longer(status)
 
   return(data)
+}
+
+total_by_system_wide <- function(indsn) {
+  indsn %>% dplyr::select(country, system, status) %>%
+    dplyr::group_by(country, system, status) %>%
+    dplyr::summarise(count = n()) %>%
+    tidyr::pivot_wider(names_from = status, values_from = count) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(dplyr::across(where(is.numeric), ~ tidyr::replace_na(.x, 0)),
+                  total = destroyed + captured + damaged + abandoned)
 }
