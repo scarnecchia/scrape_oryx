@@ -47,10 +47,12 @@ extract_system <- function(indsn, x) {
 extract_status <- function(indsn, x) {
   indsn[[x]] %>%
     rvest::html_text2() %>%
-    stringr::str_remove_all("\\(") %>%
-    stringr::str_remove_all("\\)") %>%
+    stringr::str_remove_all("[:punct:]") %>%
+    stringr::str_replace_all("and", "") %>%
     stringr::str_remove_all("\\d+") %>%
-    stringr::str_extract("destroyed|captured|abandoned|damaged|aboned")
+    stringr::str_remove_all("^\\s+") %>%
+    stringr::str_replace_all("aboned","abandoned") %>%
+    stringr::str_replace_all("sunk|scuttled","destroyed")
 }
 
 extract_url <- function(indsn, x) {
