@@ -1,0 +1,58 @@
+---
+title: "Tallies"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: tufte::tufte_html
+---
+
+```{r setup, include=FALSE}
+library(renv)
+library(rvest)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(purrr)
+library(magrittr)
+library(tibble)
+library(stringr)
+library(readr)
+library(glue)
+library(logr)
+library(kableExtra)
+library(tufte)
+source("R/functions.R")
+source("R/scrape_data.R")
+source("R/totals_by_type.R")
+source("R/per_event.R")
+totals_by_system <- scrape_data()
+```
+
+This page provides the most recent tallies of [Oryx's excellent list of Russian and Ukrainian equipment losses](https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html) from the 2022 Russian Invasion of Ukraine^[https://en.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine].
+
+## System Type
+
+### Russia
+
+```{r russia-total-system-type, echo=FALSE, warning=FALSE, message=FALSE}
+totals_by_type() %>% dplyr::filter(country=="Russia") %>% knitr::kable(caption="Russia: Totals by System Type and Status") 
+```
+
+### Ukraine
+
+```{r total-system-type, echo=FALSE, warning=FALSE, message=FALSE}
+totals_by_type() %>% dplyr::filter(country=="Ukraine") %>% knitr::kable(caption="Ukraine: Totals by System Type and Status")
+```
+
+## By System
+
+`r margin_note("Due to how the data is recorded, weapons systems may be recorded in here twice—*e.g.*, if it is listed as abandoned and captured, a system will be counted in both the abandoned and captured tallies.")`
+
+### Russia 
+```{r russia-total-system, echo=FALSE, warning=FALSE, message=FALSE}
+total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Russia") %>% dplyr::arrange(desc(total)) %>% knitr::kable(caption="Russia: Totals by System and Status")
+```
+
+### Ukraine
+
+```{r total-system, warning=FALSE, echo=FALSE, message=FALSE}
+total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Ukraine") %>% dplyr::arrange(desc(total)) %>% knitr::kable(caption="Ukraine: Totals by System and Status")
+```
