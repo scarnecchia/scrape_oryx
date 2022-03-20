@@ -1,7 +1,7 @@
 ---
 title: "Tallies"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: tufte::tufte_html
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +18,6 @@ library(readr)
 library(glue)
 library(logr)
 library(kableExtra)
-library(tufte)
 source("R/functions.R")
 source("R/scrape_data.R")
 source("R/totals_by_type.R")
@@ -28,31 +27,29 @@ totals_by_system <- scrape_data()
 
 This page provides the most recent tallies of [Oryx's excellent list of Russian and Ukrainian equipment losses](https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html) from the 2022 Russian Invasion of Ukraine^[https://en.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine].
 
-## System Type
+## System Type {.tabset}
 
 ### Russia
 
 ```{r russia-total-system-type, echo=FALSE, warning=FALSE, message=FALSE}
-totals_by_type() %>% dplyr::filter(country=="Russia") %>% knitr::kable(caption="Russia: Totals by System Type and Status") 
+totals_by_type() %>% dplyr::filter(country=="Russia") %>% kableExtra::kbl(caption="Russia: Totals by System Type and Status") %>% kableExtra::kable_classic(font_size=16)
 ```
 
 ### Ukraine
 
 ```{r total-system-type, echo=FALSE, warning=FALSE, message=FALSE}
-totals_by_type() %>% dplyr::filter(country=="Ukraine") %>% knitr::kable(caption="Ukraine: Totals by System Type and Status")
+totals_by_type() %>% dplyr::filter(country=="Ukraine") %>% kableExtra::kbl(caption="Ukraine: Totals by System Type and Status") %>% kableExtra::kable_classic(font_size=16)
 ```
 
-## By System
+## By System^["Due to how the data is recorded, weapons systems may be recorded in here twice—*e.g.*, if it is listed as abandoned and captured, a system will be counted in both the abandoned and captured tallies."]  {.tabset}
 
-`r margin_note("Due to how the data is recorded, weapons systems may be recorded in here twice—*e.g.*, if it is listed as abandoned and captured, a system will be counted in both the abandoned and captured tallies.")`
-
-### Russia 
+### Russia
 ```{r russia-total-system, echo=FALSE, warning=FALSE, message=FALSE}
-total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Russia") %>% dplyr::arrange(desc(total)) %>% knitr::kable(caption="Russia: Totals by System and Status")
+total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Russia") %>% dplyr::arrange(desc(total)) %>% kableExtra::kbl(caption="Russia: Totals by System and Status") %>% kableExtra::kable_classic(font_size=16)
 ```
 
 ### Ukraine
 
 ```{r total-system, warning=FALSE, echo=FALSE, message=FALSE}
-total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Ukraine") %>% dplyr::arrange(desc(total)) %>% knitr::kable(caption="Ukraine: Totals by System and Status")
+total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Ukraine") %>% dplyr::arrange(desc(total)) %>% kableExtra::kbl(caption="Ukraine: Totals by System and Status") %>% kableExtra::kable_classic(font_size=16)
 ```
