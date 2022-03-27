@@ -104,10 +104,11 @@ create_keys <- function(indsn) {
       )
     ) %>%
     dplyr::mutate(statusID = as.character(statusID)) %>%
+    dplyr::select(country, matID, statusID) %>%
     dplyr::ungroup()
 
   indsn <- indsn %>%
-    dplyr::left_join(statusID, by=c("Country", "MatID")) %>%
+    dplyr::left_join(statusID, by = c("country", "matID")) %>%
     dplyr::arrange(country, sysID)
 
   return(indsn)
