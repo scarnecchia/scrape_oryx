@@ -107,7 +107,7 @@ create_keys <- function(indsn) {
     dplyr::ungroup()
 
   indsn <- indsn %>%
-    dplyr::left_join(statusID) %>%
+    dplyr::left_join(statusID, by=c("Country", "MatID")) %>%
     dplyr::arrange(country, sysID)
 
   return(indsn)
