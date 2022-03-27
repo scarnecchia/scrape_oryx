@@ -61,16 +61,6 @@ scrape_data <- function() {
 
   data <- create_keys(data)
 
-  # data <- data %>%
-  #   dplyr::group_by(country) %>%
-  #   dplyr::mutate(
-  #     matID = dplyr::case_when(
-  #       country == "Russia" ~ glue::glue("7{dplyr::cur_group_rows()}"),
-  #       country == "Ukraine" ~ glue::glue("380{dplyr::cur_group_rows()}")
-  #     )
-  #   ) %>%
-  #   dplyr::mutate(matID = as.numeric(matID)) %>%
-
   } else {
     logr::put("No new data")
     data <- previous
