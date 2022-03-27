@@ -6,9 +6,13 @@
 #'
 #'
 #' @author Daniel Scarnecchia
-#'
 
 # Setup
+if (Sys.info()["sysname"] == "Linux") {
+  Sys.setenv(R_INSTALL_STAGED = FALSE)
+  print("Setting Staged Install to False")
+}
+
 library(renv)
 renv::restore()
 library(rvest)
@@ -38,14 +42,14 @@ today <- format(Sys.Date(), "%Y-%m-%d")
 
 
 totals_by_system <- scrape_data() %>%
-  readr::write_csv(., file = glue::glue("outputfiles/totals_by_system_{today}.csv"))
+  readr::write_csv(., file = glue::glue("outputfiles/totals_by_system.csv"))
 
 #' Write Event Tables
 create_event_tables(totals_by_system, status)
 
 totals_by_system_wide <- total_by_system_wide(totals_by_system) %>%
   readr::write_csv(.,
-                   file = glue::glue("outputfiles/totals_by_system_wide_{today}.csv"))
+                   file = glue::glue("outputfiles/totals_by_system_wide.csv"))
 
 total_by_type <- totals_by_type() %>%
   readr::write_csv(., file = glue::glue("outputfiles/totals_by_type_{today}.csv"))
@@ -53,7 +57,7 @@ total_by_type <- totals_by_type() %>%
 daily_count <- daily_count() %>%
   readr::write_csv(., file = "outputfiles/daily_count.csv")
 
-knitr::knit("index.Rmd")
+rmarkdown::render("index.Rmd")
 
 logr::log_code()
 logr::log_close()
