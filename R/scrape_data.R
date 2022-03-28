@@ -69,7 +69,8 @@ scrape_data <- function() {
 
   data <- create_keys(data) %>%
     dplyr::group_by(matID) %>%
-    dplyr::filter(date_recorded == min(date_recorded))
+    dplyr::filter(date_recorded == min(date_recorded)) %>%
+    dplyr::ungroup()
 
   return(data)
 
