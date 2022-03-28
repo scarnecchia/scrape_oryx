@@ -60,6 +60,12 @@ extract_url <- function(indsn, x) {
     rvest::html_attr("href")
 }
 
+
+trim_all <- function(indsn) {
+  indsn %>% dplyr::ungroup() %>%
+    dplyr::mutate(dplyr::across(tidyr::everything(), ~ stringr::str_trim(.,)))
+}
+
 #' create_keys
 #' @description creates the surrogate keys `sysID`, `imageID`, `matID`, and `eventID`
 #'
@@ -86,30 +92,22 @@ create_keys <- function(indsn) {
   indsn <- indsn %>%
     dplyr::left_join(imageID)
 
-  matID <-
-    indsn %>% dplyr::mutate(matID = glue::glue("{sysID}{imageID}")) %>%
-    dplyr::mutate(matID = as.character(matID))
+  statusID <- indsn %>%
+    dplyr::distinct(status) %>%
+    dplyr::mutate(statusID = dplyr::row_number())
+
+  indsn <- indsn %>%
+     dplyr::left_join(statusID)
+
+  matID <- indsn %>%
+    dplyr::distinct(country, sysID, imageID, statusID) %>%
+    dplyr::mutate(matID = dplyr::case_when(
+      country == "Russia" ~ glue::glue("7-{sysID}{imageID}{statusID}"),
+      country == "Ukraine" ~ glue::glue("380-{sysID}{imageID}{statusID}")
+    ))
 
   indsn <- indsn %>%
     dplyr::left_join(matID)
-
-  statusID <-
-    indsn %>%
-    dplyr::distinct(matID, status, .keep_all = TRUE) %>%
-    dplyr::group_by(country) %>%
-    dplyr::mutate(
-      statusID = dplyr::case_when(
-        country == "Russia" ~ glue::glue("7{matID}{dplyr::cur_group_rows()}"),
-        country == "Ukraine" ~ glue::glue("380{matID}{dplyr::cur_group_rows()}")
-      )
-    ) %>%
-    dplyr::mutate(statusID = as.character(statusID)) %>%
-    dplyr::select(country, matID, statusID) %>%
-    dplyr::ungroup()
-
-  indsn <- indsn %>%
-    dplyr::left_join(statusID, by = c("country", "matID")) %>%
-    dplyr::arrange(country, sysID)
 
   return(indsn)
 }
