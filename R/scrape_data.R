@@ -53,7 +53,7 @@ scrape_data <- function() {
   check <- data %>%
     dplyr::anti_join(previous, by = c("url"))
 
-  if (length(check) > 0) {
+  if (nrow(check) > 0) {
 
   data <- check %>% dplyr::bind_rows(readr::read_csv("inputfiles/totals_by_system.csv")) %>%
     dplyr::arrange(country, system, date_recorded)
