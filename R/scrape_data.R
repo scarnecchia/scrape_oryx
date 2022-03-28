@@ -43,14 +43,17 @@ scrape_data <- function() {
   data <- data %>%
     dplyr::mutate(status = stringr::str_extract_all(status, "destroyed|captured|abandoned|damaged")) %>%
     tidyr::unnest_longer(status) %>%
-    dplyr::mutate(date_recorded = as.Date(lubridate::today()))
+    dplyr::mutate(date_recorded = as.Date(lubridate::today())) %>%
+    trim_all()
 
-  previous <- readr::read_csv("inputfiles/totals_by_system.csv")
+  previous <- readr::read_csv("inputfiles/totals_by_system.csv") %>%
+    trim_all() %>%
+    dplyr::mutate(date_recorded = as.Date(date_recorded))
 
   check <- data %>%
-    dplyr::anti_join(previous, by = c("status", "url"))
+    dplyr::anti_join(previous, by = c("url"))
 
-  if (length(check) > 0) {
+  if (nrow(check) > 0) {
 
   data <- check %>% dplyr::bind_rows(readr::read_csv("inputfiles/totals_by_system.csv")) %>%
     dplyr::arrange(country, system, date_recorded)
@@ -59,12 +62,15 @@ scrape_data <- function() {
 
   data %>% readr::write_csv("inputfiles/totals_by_system.csv")
 
-  data <- create_keys(data)
-
   } else {
     logr::put("No new data")
     data <- previous
   }
+
+  data <- create_keys(data) %>%
+    dplyr::group_by(matID) %>%
+    dplyr::filter(date_recorded == min(date_recorded)) %>%
+    dplyr::ungroup()
 
   return(data)
 
