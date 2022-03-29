@@ -31,18 +31,19 @@ totals_by_type <- function() {
     totals[l, "equipment"] <-
       heads[l] %>% stringr::str_remove_all(" \\(.*\\)")
     totals[l, "destroyed"] <-
-      heads[l] %>% stringr::str_extract("destroyed: ...") %>%
+      heads[l] %>% stringr::str_extract("destroyed: \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
     totals[l, "abandoned"] <-
-      heads[l] %>% stringr::str_extract("(abandoned|aboned): ...") %>%
+      heads[l] %>% stringr::str_extract("(abandoned|aboned): \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
     totals[l, "captured"] <-
-      heads[l] %>% stringr::str_extract("captured: ...") %>%
+      heads[l] %>% stringr::str_extract("captured: \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
     totals[l, "damaged"] <-
-      heads[l] %>% stringr::str_extract("damaged: ...") %>%
+      heads[l] %>% stringr::str_extract("damaged: \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
   }
+
 
   totals_df <- totals %>%
     dplyr::mutate(
