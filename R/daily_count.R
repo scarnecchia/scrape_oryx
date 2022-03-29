@@ -6,7 +6,7 @@
 #'
 #' @examples
 daily_count <- function() {
-  baseline <- readr::read_csv("inputfiles/daily_count_baseline.csv")
+  baseline <- readr::read_csv(glue::glue("inputfiles/daily_count_baseline{lubridate::today()}.csv"))
   baseline %>% readr::write_csv("inputfiles/daily_count_baseline.csv.bak")
 
   today_total <- totals_by_type() %>%
@@ -21,7 +21,7 @@ daily_count <- function() {
     dplyr::bind_rows(check) %>%
     dplyr::group_by(country, equipment_type) %>%
     dplyr::arrange(country, equipment_type, date_recorded) %>%
-    readr::write_csv("inputfiles/daily_count_baseline.csv")
+    readr::write_csv(glue::glue("inputfiles/daily_count_baseline{lubridate::today()+1}.csv"))
 
   running_count <- baseline %>%
     dplyr::bind_rows(check) %>%
@@ -29,7 +29,10 @@ daily_count <- function() {
     dplyr::arrange(country, equipment_type, date_recorded) %>%
     dplyr::mutate(dplyr::across(where(is.numeric), ~ .x - dplyr::lag(.x), .names =
                                   "{.col}_diff")) %>%
-    dplyr::mutate(dplyr::across(where(is.numeric), ~ tidyr::replace_na(.x, 0)))
+    dplyr::mutate(dplyr::across(where(is.numeric), ~ tidyr::replace_na(.x, 0))) %>%
+    dplyr::distinct(country, equipment_type, date_recorded, .keep_all=TRUE)
+
+    rm(check)
 
     return(running_count)
   } else {

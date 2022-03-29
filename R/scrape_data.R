@@ -46,21 +46,22 @@ scrape_data <- function() {
     dplyr::mutate(date_recorded = as.Date(lubridate::today())) %>%
     trim_all()
 
-  previous <- readr::read_csv("inputfiles/totals_by_system.csv") %>%
+  previous <- readr::read_csv(glue::glue("inputfiles/totals_by_system{lubridate::today()}.csv")) %>%
     trim_all() %>%
     dplyr::mutate(date_recorded = as.Date(date_recorded))
 
   check <- data %>%
-    dplyr::anti_join(previous, by = c("url"))
+    dplyr::anti_join(previous, by = c("url")) %>%
+    dplyr::mutate(date_recorded = as.Date(date_recorded))
 
   if (nrow(check) > 0) {
 
-  data <- check %>% dplyr::bind_rows(readr::read_csv("inputfiles/totals_by_system.csv")) %>%
+  data <- check %>% dplyr::bind_rows(readr::read_csv("inputfiles/totals_by_system.csv.bak")) %>%
     dplyr::arrange(country, system, date_recorded)
 
-  previous %>% readr::write_csv("inputfiles/totals_by_system.csv.bak")
+  previous %>%  readr::write_csv("inputfiles/totals_by_system.csv.bak")
 
-  data %>% readr::write_csv("inputfiles/totals_by_system.csv")
+  data %>% readr::write_csv(glue::glue("inputfiles/totals_by_system{lubridate::today()+1}.csv"))
 
   } else {
     logr::put("No new data")
