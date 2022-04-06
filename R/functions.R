@@ -2,6 +2,17 @@ get_data <- function(url, elements) {
   rvest::read_html(url) %>% rvest::html_elements(elements)
 }
 
+get_inputfile <- function(file) {
+  path <- fs::dir_info("inputfiles", regexp=file) %>%
+    dplyr::select(path, change_time, birth_time) %>%
+    dplyr::filter(birth_time == max(birth_time)) %>%
+    dplyr::pull(path)
+
+  logr::put(path)
+
+  readr::read_csv(path)
+}
+
 extract_total <- function(indsn, x) {
   total <- indsn[[x]] %>% rvest::html_text2() %>%
     stringr::str_extract("\\d+(?= \\b)") %>%
