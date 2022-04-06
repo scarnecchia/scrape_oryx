@@ -6,7 +6,7 @@
 #'
 #' @examples
 daily_count <- function() {
-  baseline <- readr::read_csv(glue::glue("inputfiles/daily_count_baseline{lubridate::today()}.csv"))
+  baseline <- get_inputfile("daily_count_baseline")
   baseline %>% readr::write_csv("inputfiles/daily_count_baseline.csv.bak")
 
   today_total <- totals_by_type() %>%
