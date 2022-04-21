@@ -41,7 +41,7 @@ lf <- logr::log_open(tmp)
 today <- format(Sys.Date(), "%Y-%m-%d")
 
 
-totals_by_system <- scrape_data() %>%
+totals_by_system <- create_data() %>%
   readr::write_csv(., file = glue::glue("outputfiles/totals_by_system.csv"))
 
 #' Write Event Tables

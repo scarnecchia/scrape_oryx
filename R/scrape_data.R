@@ -3,20 +3,20 @@
 #'
 #' @return a tibble
 #' @export
-scrape_data <- function() {
+scrape_data <- function(country) {
+  if (country == "Russia") {
+    url <-
+      "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html"
+  } else {
+    url <-
+      "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html"
+  }
+
   materiel <-
-    get_data(
-      "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html",
-      "article"
-    ) %>%
+    get_data(url,
+             "article") %>%
     rvest::html_elements("li")
 
-  # Retreive the start position of each country
-  country_pos <- materiel %>% rvest::html_text2() %>%
-    # T-64BV is the first row in the tank list and marks the beginning of each country
-    stringr::str_which("T-64BV")
-
-  #' Run Program
   data <-
     tibble::tibble(
       country = character(),
@@ -31,8 +31,7 @@ scrape_data <- function() {
     status <- materiel[[a]] %>% rvest::html_elements("a")
     for (b in seq_along(status)) {
       counter = counter + 1
-      data[counter, 1] <-
-        ifelse(a < country_pos[2], "Russia", "Ukraine")
+      data[counter, 1] <- country
       data[counter, 2] <- extract_origin(materiel, a)
       data[counter, 3] <- extract_system(materiel, a)
       data[counter, 4] <- extract_status(status, b)
@@ -45,6 +44,15 @@ scrape_data <- function() {
     tidyr::unnest_longer(status) %>%
     dplyr::mutate(date_recorded = as.Date(lubridate::today())) %>%
     trim_all()
+}
+
+create_data <- function() {
+  russia <- scrape_data("Russia")
+  ukraine <- scrape_data("Ukraine")
+
+  data <- russia %>%
+    dplyr::bind_rows(ukraine) %>%
+    dplyr::select(country, origin, system, status, url, date_recorded)
 
   previous <- get_inputfile("totals_by_system") %>%
     trim_all() %>%
@@ -61,12 +69,14 @@ scrape_data <- function() {
       )) %>%
       dplyr::arrange(country, system, date_recorded)
 
-  data <- check %>% dplyr::bind_rows(get_inputfile("totals_by_system")) %>%
-    dplyr::arrange(country, system, date_recorded)
+    data <- check %>% dplyr::bind_rows(previous, .id = NULL) %>%
+      dplyr::arrange(country, system, date_recorded)
 
-  previous %>% readr::write_csv("inputfiles/totals_by_system.csv.bak")
+    previous %>% readr::write_csv("inputfiles/totals_by_system.csv.bak")
 
-  data %>% readr::write_csv(glue::glue("inputfiles/totals_by_system{lubridate::today()+1}.csv"))
+    data %>% readr::write_csv(glue::glue(
+      "inputfiles/totals_by_system{lubridate::today()+1}.csv"
+    ))
 
   } else {
     logr::put("No new data")
