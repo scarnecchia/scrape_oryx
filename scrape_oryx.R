@@ -35,13 +35,16 @@ source("R/totals_by_type.R")
 source("R/per_event.R")
 source("R/daily_count.R")
 
+russia_url <- "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html"
+ukraine_url <- "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html"
+
 tmp <-
   file.path("outputfiles", sprintf("scrape_oryx_%s.log", format(Sys.time(), "%Y%m%dT%H%M%S")))
 lf <- logr::log_open(tmp)
 today <- format(Sys.Date(), "%Y-%m-%d")
 
 
-totals_by_system <- scrape_data() %>%
+totals_by_system <- create_data() %>%
   readr::write_csv(., file = glue::glue("outputfiles/totals_by_system.csv"))
 
 #' Write Event Tables

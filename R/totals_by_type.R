@@ -2,10 +2,18 @@
 #' @description Gets data by system category.
 #'
 #' @return a tibble
-totals_by_type <- function() {
+create_by_type <- function(country) {
+  if (country == "Russia") {
+    url <-
+      russia_url
+  } else {
+    url <-
+      ukraine_url
+  }
+
   heads <-
     get_data(
-      "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html",
+      url,
       "article div"
     ) %>%
     rvest::html_elements("h3") %>%
@@ -15,8 +23,7 @@ totals_by_type <- function() {
   heads <- heads[nchar(heads) > 0]
 
   # Get the positons of the Russia and Ukraine headers
-  rus_pos <- heads %>% stringr::str_which("Russia") %>% as.double()
-  ukr_pos <- heads %>% stringr::str_which("Ukraine") %>% as.double()
+  pos <- heads %>% stringr::str_which(country) %>% as.double()
 
   totals <- tibble(
     country = character(),
@@ -45,20 +52,31 @@ totals_by_type <- function() {
   }
 
 
-  totals_df <- totals %>%
+  country_df <- totals %>%
     dplyr::mutate(
       dplyr::across(destroyed:damaged, ~ as.double(tidyr::replace_na(.x, "0"))),
       type_total = destroyed + abandoned + captured + damaged,
-      row_id = 1:n(),
-      country = dplyr::case_when(row_id < ukr_pos ~ "Russia",
-                                 row_id >= ukr_pos ~ "Ukraine")
+      row_id = 1:n()
     ) %>%
+    dplyr::mutate(country = tidyr::replace_na(country, !!!country)) %>%
     select(-row_id) %>%
     dplyr::mutate(
-      equipment = replace(equipment, rus_pos, "All Types"),
-      equipment = replace(equipment, ukr_pos, "All Types")
+      equipment = replace(equipment, pos, "All Types"),
     ) %>%
     dplyr::rename(equipment_type = equipment)
 
+  return(country_df)
+}
+
+totals_by_type <- function() {
+  russia <- create_by_type("Russia")
+  ukraine <- create_by_type("Ukraine")
+
+  totals_df <- russia %>%
+    dplyr::bind_rows(ukraine, .id=NULL)
+
   return(totals_df)
 }
+
+
+
