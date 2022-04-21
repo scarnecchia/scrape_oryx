@@ -5,10 +5,10 @@
 create_by_type <- function(country) {
   if (country == "Russia") {
     url <-
-      "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html"
+      russia_url
   } else {
     url <-
-      "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html"
+      ukraine_url
   }
 
   heads <-
