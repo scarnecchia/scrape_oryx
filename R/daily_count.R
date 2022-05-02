@@ -6,10 +6,10 @@
 #'
 #' @examples
 daily_count <- function() {
-  baseline <- get_inputfile("daily_count_baseline")
+  baseline <- get_inputfile("inputfiles/daily_count_baseline.csv")
   baseline %>% readr::write_csv("inputfiles/daily_count_baseline.csv.bak")
 
-  today_total <- totals_by_type() %>%
+  today_total <- totals_by_system %>%
     dplyr::mutate(date_recorded = as.Date(today()))
 
   check <- today_total %>%
