@@ -38,9 +38,9 @@ source("R/daily_count.R")
 russia_url <- "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html"
 ukraine_url <- "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html"
 
-tmp <-
-  file.path("outputfiles", sprintf("scrape_oryx_%s.log", format(Sys.time(), "%Y%m%dT%H%M%S")))
-lf <- logr::log_open(tmp)
+# tmp <-
+#   file.path("outputfiles", sprintf("scrape_oryx_%s.log", format(Sys.time(), "%Y%m%dT%H%M%S")))
+#lf <- logr::log_open(tmp)
 today <- format(Sys.Date(), "%Y-%m-%d")
 
 
@@ -57,12 +57,12 @@ totals_by_system_wide <- total_by_system_wide(totals_by_system) %>%
 total_by_type <- totals_by_type() %>%
   readr::write_csv(., file = glue::glue("outputfiles/totals_by_type.csv"))
 
-daily_count <- daily_count() %>%
-  readr::write_csv(., file = "outputfiles/daily_count.csv")
+# daily_count <- daily_count() %>%
+#   readr::write_csv(., file = "outputfiles/daily_count.csv")
 
 rmarkdown::render("index.Rmd")
 
-logr::log_code()
-logr::log_close()
-
-writeLines(readLines(lf))
+# logr::log_code()
+# logr::log_close()
+#
+# writeLines(readLines(lf))

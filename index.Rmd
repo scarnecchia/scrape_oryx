@@ -29,11 +29,9 @@ output: html_document
 This page provides the most recent tallies of [Oryx's excellent list of Russian and Ukrainian equipment losses](https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html) from the 2022 Russian Invasion of Ukraine^[[Wikipedia](https://en.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine)]. Up-to-date output datasets can be found at in the [oryx_data](https://github.com/scarnecchia/oryx_data) repo. This repo is updated automatically daily at 22:30 EDT/EST. The code for this tool can be downloaded at [scrape_oryx](https://github.com/scarnecchia/scrape_oryx/releases)
 
 ## Graphs
-```{r daily_graph, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-# daily_count <- daily_count()
-
-graph_counts(daily_count, "All Types", "type_total")
-```
+# ```{r daily_graph, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
+# graph_counts(daily_count, "All Types", "type_total")
+# ```
 
 
 ## System Type {.tabset}

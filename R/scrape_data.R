@@ -64,9 +64,7 @@ create_data <- function() {
 
   if (nrow(check) > 0) {
     data <-
-      check %>% dplyr::bind_rows(readr::read_csv(
-        glue::glue("inputfiles/totals_by_system{lubridate::today()}.csv")
-      )) %>%
+      check %>% dplyr::bind_rows(previous) %>%
       dplyr::arrange(country, system, date_recorded)
 
     data <- check %>% dplyr::bind_rows(previous, .id = NULL) %>%
