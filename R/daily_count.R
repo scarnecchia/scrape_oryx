@@ -6,31 +6,31 @@
 #'
 #' @examples
 daily_count <- function() {
-  baseline <- get_inputfile("inputfiles/daily_count_baseline.csv")
+  baseline <- get_inputfile("inputfiles/daily_count_baseline.csv") %>% dplyr::distinct()
   baseline %>% readr::write_csv("inputfiles/daily_count_baseline.csv.bak")
 
   today_total <- totals_by_system %>%
     dplyr::mutate(date_recorded = as.Date(today()))
 
   check <- today_total %>%
-    dplyr::anti_join(baseline, by = c("country", "equipment_type", "destroyed", "abandoned", "captured", "damaged", "type_total"))
+    dplyr::anti_join(baseline, by = c("country", "origin","system","status","url"))
 
   if (length(check) > 0) {
 
   baseline %>%
     dplyr::bind_rows(check) %>%
-    dplyr::group_by(country, equipment_type) %>%
-    dplyr::arrange(country, equipment_type, date_recorded) %>%
+    dplyr::group_by(country, system) %>%
+    dplyr::arrange(country, system, date_recorded) %>%
     readr::write_csv(glue::glue("inputfiles/daily_count_baseline{lubridate::today()+1}.csv"))
 
   running_count <- baseline %>%
     dplyr::bind_rows(check) %>%
-    dplyr::group_by(country, equipment_type) %>%
-    dplyr::arrange(country, equipment_type, date_recorded) %>%
+    dplyr::group_by(country, system) %>%
+    dplyr::arrange(country, system, date_recorded) %>%
     dplyr::mutate(dplyr::across(where(is.numeric), ~ .x - dplyr::lag(.x), .names =
                                   "{.col}_diff")) %>%
     dplyr::mutate(dplyr::across(where(is.numeric), ~ tidyr::replace_na(.x, 0))) %>%
-    dplyr::distinct(country, equipment_type, date_recorded, .keep_all=TRUE)
+    dplyr::distinct(country, system, date_recorded, .keep_all=TRUE)
 
     rm(check)
 
