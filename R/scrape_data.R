@@ -56,7 +56,8 @@ create_data <- function() {
 
   previous <- get_inputfile("totals_by_system") %>%
     trim_all() %>%
-    dplyr::mutate(date_recorded = as.Date(date_recorded))
+    dplyr::mutate(date_recorded = as.Date(date_recorded)) %>%
+    dplyr::distinct()
 
   check <- data %>%
     dplyr::anti_join(previous, by = c("url")) %>%
