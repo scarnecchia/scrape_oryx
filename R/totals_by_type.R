@@ -23,7 +23,9 @@ create_by_type <- function(country) {
   heads <- heads[nchar(heads) > 0]
 
   # Get the positons of the Russia and Ukraine headers
-  pos <- heads %>% stringr::str_which(country) %>% as.double()
+  pos <- heads %>%
+    stringr::str_which(country) %>%
+    as.double()
 
   totals <- tibble(
     country = character(),
@@ -38,16 +40,20 @@ create_by_type <- function(country) {
     totals[l, "equipment"] <-
       heads[l] %>% stringr::str_remove_all(" \\(.*\\)")
     totals[l, "destroyed"] <-
-      heads[l] %>% stringr::str_extract("destroyed: \\d+") %>%
+      heads[l] %>%
+      stringr::str_extract("destroyed: \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
     totals[l, "abandoned"] <-
-      heads[l] %>% stringr::str_extract("(abandoned|aboned): \\d+") %>%
+      heads[l] %>%
+      stringr::str_extract("(abandoned|aboned): \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
     totals[l, "captured"] <-
-      heads[l] %>% stringr::str_extract("captured: \\d+") %>%
+      heads[l] %>%
+      stringr::str_extract("captured: \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
     totals[l, "damaged"] <-
-      heads[l] %>% stringr::str_extract("damaged: \\d+") %>%
+      heads[l] %>%
+      stringr::str_extract("damaged: \\d+") %>%
       stringr::str_remove_all("[:alpha:]|[:punct:]")
   }
 
@@ -73,10 +79,7 @@ totals_by_type <- function() {
   ukraine <- create_by_type("Ukraine")
 
   totals_df <- russia %>%
-    dplyr::bind_rows(ukraine, .id=NULL)
+    dplyr::bind_rows(ukraine, .id = NULL)
 
   return(totals_df)
 }
-
-
-
