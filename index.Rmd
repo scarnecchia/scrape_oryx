@@ -39,24 +39,38 @@ graph_counts(daily_count, "All Types", "type_total")
 ### Russia
 
 ```{r russia-total-system-type, echo=FALSE, warning=FALSE, message=FALSE}
-totals_by_type() %>% dplyr::filter(country=="Russia") %>% kableExtra::kbl(caption="Russia: Totals by System Type and Status") %>% kableExtra::kable_classic(font_size=16)
+totals_by_type() %>%
+  dplyr::filter(country == "Russia") %>%
+  kableExtra::kbl(caption = "Russia: Totals by System Type and Status") %>%
+  kableExtra::kable_classic(font_size = 16)
 ```
 
 ### Ukraine
 
 ```{r total-system-type, echo=FALSE, warning=FALSE, message=FALSE}
-totals_by_type() %>% dplyr::filter(country=="Ukraine") %>% kableExtra::kbl(caption="Ukraine: Totals by System Type and Status") %>% kableExtra::kable_classic(font_size=16)
+totals_by_type() %>%
+  dplyr::filter(country == "Ukraine") %>%
+  kableExtra::kbl(caption = "Ukraine: Totals by System Type and Status") %>%
+  kableExtra::kable_classic(font_size = 16)
 ```
 
 ## By System^["Due to how the data is recorded, weapons systems may be recorded in here twice—*e.g.*, if it is listed as abandoned and captured, a system will be counted in both the abandoned and captured tallies."]  {.tabset}
 
 ### Russia
 ```{r russia-total-system, echo=FALSE, warning=FALSE, message=FALSE}
-total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Russia") %>% dplyr::arrange(desc(total)) %>% kableExtra::kbl(caption="Russia: Totals by System and Status") %>% kableExtra::kable_classic(font_size=16)
+total_by_system_wide(totals_by_system) %>%
+  dplyr::filter(country == "Russia") %>%
+  dplyr::arrange(desc(total)) %>%
+  kableExtra::kbl(caption = "Russia: Totals by System and Status") %>%
+  kableExtra::kable_classic(font_size = 16)
 ```
 
 ### Ukraine
 
 ```{r total-system, warning=FALSE, echo=FALSE, message=FALSE}
-total_by_system_wide(totals_by_system) %>% dplyr::filter(country=="Ukraine") %>% dplyr::arrange(desc(total)) %>% kableExtra::kbl(caption="Ukraine: Totals by System and Status") %>% kableExtra::kable_classic(font_size=16)
+total_by_system_wide(totals_by_system) %>%
+  dplyr::filter(country == "Ukraine") %>%
+  dplyr::arrange(desc(total)) %>%
+  kableExtra::kbl(caption = "Ukraine: Totals by System and Status") %>%
+  kableExtra::kable_classic(font_size = 16)
 ```
