@@ -52,11 +52,13 @@ create_data <- function() {
 
   data <- russia %>%
     dplyr::bind_rows(ukraine) %>%
-    dplyr::select(country, origin, system, status, url, date_recorded)
+    dplyr::select(country, origin, system, status, url, date_recorded) %>%
+    dplyr::distinct()
 
   previous <- get_inputfile("totals_by_system") %>%
     trim_all() %>%
     dplyr::mutate(date_recorded = as.Date(date_recorded)) %>%
+    dplyr::select(country,origin,system,status,url,date_recorded) %>%
     dplyr::distinct()
 
   check <- data %>%
@@ -64,10 +66,6 @@ create_data <- function() {
     dplyr::mutate(date_recorded = as.Date(date_recorded))
 
   if (nrow(check) > 0) {
-    data <-
-      check %>% dplyr::bind_rows(previous) %>%
-      dplyr::arrange(country, system, date_recorded)
-
     data <- check %>% dplyr::bind_rows(previous, .id = NULL) %>%
       dplyr::arrange(country, system, date_recorded)
 
@@ -78,11 +76,11 @@ create_data <- function() {
     ))
 
   } else {
-    logr::put("No new data")
     data <- previous
   }
 
-  data <- create_keys(data) %>%
+  data <- data %>%
+    create_keys() %>%
     dplyr::group_by(matID) %>%
     dplyr::filter(date_recorded == min(date_recorded)) %>%
     dplyr::ungroup()
