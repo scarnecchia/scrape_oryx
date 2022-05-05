@@ -2,11 +2,14 @@ get_data <- function(url, elements) {
   rvest::read_html(url) %>% rvest::html_elements(elements)
 }
 
-get_inputfile <- function(file) {
+get_inputfile <- function(.file) {
   path <- fs::dir_info("inputfiles", type="file") %>%
     dplyr::select(path, change_time, birth_time) %>%
+    dplyr::filter(stringr::str_detect(path, file)) %>%
     dplyr::filter(birth_time == max(birth_time)) %>%
     dplyr::pull(path)
+
+  message(path)
 
   # logr::put(path)
 
@@ -94,21 +97,21 @@ create_keys <- function(indsn) {
     dplyr::mutate(sysID = dplyr::row_number())
 
   indsn <- indsn %>%
-    dplyr::left_join(sysID)
+    dplyr::left_join(sysID, by="system")
 
   imageID <- indsn %>%
     dplyr::distinct(url) %>%
     dplyr::mutate(imageID = dplyr::row_number())
 
   indsn <- indsn %>%
-    dplyr::left_join(imageID)
+    dplyr::left_join(imageID, by="url")
 
   statusID <- indsn %>%
     dplyr::distinct(status) %>%
     dplyr::mutate(statusID = dplyr::row_number())
 
   indsn <- indsn %>%
-     dplyr::left_join(statusID)
+     dplyr::left_join(statusID, by="status")
 
   matID <- indsn %>%
     dplyr::distinct(country, sysID, imageID, statusID) %>%
@@ -118,7 +121,7 @@ create_keys <- function(indsn) {
     ))
 
   indsn <- indsn %>%
-    dplyr::left_join(matID)
+    dplyr::left_join(matID, by=c("country", "sysID", "imageID", "statusID"))
 
   return(indsn)
 }
