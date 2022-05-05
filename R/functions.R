@@ -3,7 +3,7 @@ get_data <- function(url, elements) {
 }
 
 get_inputfile <- function(.file) {
-  path <- fs::dir_info("inputfiles", type="file") %>%
+  path <- fs::dir_info("inputfiles", type = "file") %>%
     dplyr::select(path, change_time, birth_time) %>%
     dplyr::filter(stringr::str_detect(path, file)) %>%
     dplyr::filter(birth_time == max(birth_time)) %>%
@@ -17,13 +17,15 @@ get_inputfile <- function(.file) {
 }
 
 extract_total <- function(indsn, x) {
-  total <- indsn[[x]] %>% rvest::html_text2() %>%
+  total <- indsn[[x]] %>%
+    rvest::html_text2() %>%
     stringr::str_extract("\\d+(?= \\b)") %>%
     readr::parse_double()
 }
 
 extract_origin <- function(indsn, x) {
-  indsn[[x]] %>% rvest::html_element("img") %>%
+  indsn[[x]] %>%
+    rvest::html_element("img") %>%
     rvest::html_attr("src") %>%
     stringr::str_extract("(Flag_of_the_|Flag_of_)([a-zA-Z_]+|[a-zA-Z]+)") %>%
     stringr::str_remove("(Flag_of_the_|Flag_of_)") %>%
@@ -31,7 +33,8 @@ extract_origin <- function(indsn, x) {
 }
 
 extract_counts <- function(indsn, x, condition) {
-  counts <- indsn[[x]] %>% rvest::html_text2() %>%
+  counts <- indsn[[x]] %>%
+    rvest::html_text2() %>%
     stringr::str_remove_all(".*(?=:)") %>%
     stringr::str_remove_all(": ") %>%
     stringr::str_remove_all("\\(") %>%
@@ -53,7 +56,8 @@ extract_counts <- function(indsn, x, condition) {
 }
 
 extract_system <- function(indsn, x) {
-  indsn[[x]] %>% rvest::html_text2() %>%
+  indsn[[x]] %>%
+    rvest::html_text2() %>%
     stringr::str_remove_all("^\\d+ ") %>%
     stringr::str_extract(".*(?=:)")
 }
@@ -76,8 +80,9 @@ extract_url <- function(indsn, x) {
 
 
 trim_all <- function(indsn) {
-  indsn %>% dplyr::ungroup() %>%
-    dplyr::mutate(dplyr::across(tidyr::everything(), ~ stringr::str_trim(.,)))
+  indsn %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(dplyr::across(tidyr::everything(), ~ stringr::str_trim(., )))
 }
 
 #' create_keys
@@ -97,21 +102,21 @@ create_keys <- function(indsn) {
     dplyr::mutate(sysID = dplyr::row_number())
 
   indsn <- indsn %>%
-    dplyr::left_join(sysID, by="system")
+    dplyr::left_join(sysID, by = "system")
 
   imageID <- indsn %>%
     dplyr::distinct(url) %>%
     dplyr::mutate(imageID = dplyr::row_number())
 
   indsn <- indsn %>%
-    dplyr::left_join(imageID, by="url")
+    dplyr::left_join(imageID, by = "url")
 
   statusID <- indsn %>%
     dplyr::distinct(status) %>%
     dplyr::mutate(statusID = dplyr::row_number())
 
   indsn <- indsn %>%
-     dplyr::left_join(statusID, by="status")
+    dplyr::left_join(statusID, by = "status")
 
   matID <- indsn %>%
     dplyr::distinct(country, sysID, imageID, statusID) %>%
@@ -121,7 +126,7 @@ create_keys <- function(indsn) {
     ))
 
   indsn <- indsn %>%
-    dplyr::left_join(matID, by=c("country", "sysID", "imageID", "statusID"))
+    dplyr::left_join(matID, by = c("country", "sysID", "imageID", "statusID"))
 
   return(indsn)
 }
