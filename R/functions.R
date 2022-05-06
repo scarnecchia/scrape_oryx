@@ -3,7 +3,8 @@ get_data <- function(url, elements) {
 }
 
 get_inputfile <- function(.file) {
-  path <- fs::dir_info("inputfiles", type = "file") %>%
+  path <- fs::dir_info("inputfiles", type = "file", regexp=".file") %>%
+    dplyr::filter(!stringr::str_detect(path, ".bak")) %>%
     dplyr::select(path, change_time, birth_time) %>%
     dplyr::filter(stringr::str_detect(path, .file)) %>%
     dplyr::filter(birth_time == max(birth_time)) %>%
