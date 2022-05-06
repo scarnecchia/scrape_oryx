@@ -57,7 +57,7 @@ create_data <- function() {
     dplyr::select(country, origin, system, status, url, date_recorded) %>%
     dplyr::distinct()
 
-  previous <- get_inputfile("totals_by_system") %>%
+  previous <- get_inputfile(.file="totals_by_system") %>%
     trim_all() %>%
     dplyr::mutate(date_recorded = as.Date(date_recorded)) %>%
     dplyr::select(country, origin, system, status, url, date_recorded) %>%
@@ -75,8 +75,7 @@ create_data <- function() {
     previous %>% readr::write_csv("inputfiles/totals_by_system.csv.bak")
 
     data %>% readr::write_csv(glue::glue(
-      "inputfiles/totals_by_system{lubridate::today()+1}.csv"
-    ))
+      "inputfiles/totals_by_system{lubridate::today()+1}.csv"))
   } else {
     data <- previous
   }
