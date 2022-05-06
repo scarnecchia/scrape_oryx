@@ -9,11 +9,13 @@
 create_event_tables <- function(indsn, ...) {
   idnsn <- indsn %>% dplyr::ungroup()
 
-  x <- indsn %>% dplyr::group_by(...) %>%
+  x <- indsn %>%
+    dplyr::group_by(...) %>%
     {
-      setNames(group_split(.), group_keys(.)[[1]])
+      setNames(dplyr::group_split(.), dplyr::group_keys(.)[[1]])
     }
 
-  x %>% names(.) %>%
-    purrr::map( ~ write_csv(x[[.]], glue::glue("outputfiles/event_{.}.csv")))
+  x %>%
+    names(.) %>%
+    purrr::map(~ write_csv(x[[.]], glue::glue("outputfiles/event_{.}.csv")))
 }
