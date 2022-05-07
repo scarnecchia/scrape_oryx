@@ -74,8 +74,7 @@ create_data <- function() {
 
     previous %>% readr::write_csv("inputfiles/totals_by_system.csv.bak")
 
-    data %>% readr::write_csv(glue::glue(
-      "inputfiles/totals_by_system{lubridate::today()+1}.csv"))
+    data %>% readr::write_csv(glue::glue("inputfiles/totals_by_system{lubridate::today()+1}.csv"))
   } else {
     data <- previous
   }
