@@ -3,11 +3,16 @@ get_data <- function(url, elements) {
 }
 
 get_inputfile <- function(.file) {
-  path <- fs::dir_info("inputfiles", type = "file", regexp=".file") %>%
+  path <-
+    fs::dir_info("inputfiles", type = "file", regexp = ".file") %>%
     dplyr::filter(!stringr::str_detect(path, ".bak")) %>%
-    dplyr::select(path, change_time, birth_time) %>%
+    dplyr::select(path) %>%
     dplyr::filter(stringr::str_detect(path, .file)) %>%
-    dplyr::filter(birth_time == max(birth_time)) %>%
+    dplyr::mutate(
+      date_created = stringr::str_remove_all(fs::path_file(path), "[a-zA-Z_.]+"),
+      date_created = as.Date(date_created)
+    ) %>%
+    dplyr::filter(date_created == max(date_created)) %>%
     dplyr::pull(path)
 
   message(path)
