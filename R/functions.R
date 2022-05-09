@@ -12,6 +12,7 @@ get_inputfile <- function(.file) {
       date_created = stringr::str_remove_all(fs::path_file(path), "[a-zA-Z_.]+"),
       date_created = as.Date(date_created)
     ) %>%
+    tidyr::drop_na(date_created) %>%
     dplyr::filter(date_created == max(date_created)) %>%
     dplyr::pull(path)
 
