@@ -14,7 +14,7 @@ if (Sys.info()["sysname"] == "Linux") {
 }
 
 library(renv)
-renv::restore()
+renv::restore(prompt = FALSE)
 library(rvest)
 library(dplyr)
 library(tidyr)
@@ -29,6 +29,7 @@ library(logr)
 library(ggplot2)
 library(scales)
 library(ggthemes)
+library(fs)
 source("R/functions.R")
 source("R/scrape_data.R")
 source("R/totals_by_type.R")
