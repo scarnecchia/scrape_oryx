@@ -41,6 +41,7 @@ Russia,All Types,1669,259,1175,52,3155,2022-04-24,NA,NA,NA,NA,NA
 Russia,All Types,1860,266,1228,63,3417,2022-05-05,NA,NA,NA,NA,NA
 Russia,All Types,1886,264,1235,65,3450,2022-05-06,NA,NA,NA,NA,NA
 Russia,All Types,1927,272,1248,67,3514,2022-05-08,NA,NA,NA,NA,NA
+Russia,All Types,1927,272,1251,68,3518,2022-05-09,NA,NA,NA,NA,NA
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-03-19,0,0,0,0,0
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-03-26,0,0,0,0,0
@@ -265,6 +266,7 @@ Russia,Multiple Rocket Launchers,26,5,27,0,58,2022-04-21,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,26,5,28,0,59,2022-04-24,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,29,4,28,1,62,2022-05-05,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,29,3,29,1,62,2022-05-08,NA,NA,NA,NA,NA
+Russia,Multiple Rocket Launchers,29,3,30,1,63,2022-05-09,NA,NA,NA,NA,NA
 Russia,Naval Ships,1,0,0,0,1,2022-03-26,0,0,0,0,0
 Russia,Naval Ships,1,0,0,0,1,2022-03-27,0,0,0,0,0
 Russia,Naval Ships,1,0,0,2,3,2022-03-29,0,0,0,2,2
@@ -328,6 +330,7 @@ Russia,Surface-To-Air Missile Systems,26,7,19,1,53,2022-04-20,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,28,7,20,1,56,2022-05-05,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,29,7,20,1,57,2022-05-06,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,30,7,20,1,58,2022-05-08,NA,NA,NA,NA,NA
+Russia,Surface-To-Air Missile Systems,30,7,21,1,59,2022-05-09,NA,NA,NA,NA,NA
 Russia,Tanks,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Tanks,103,41,106,4,254,2022-03-19,103,41,106,4,254
 Russia,Tanks,128,42,126,4,300,2022-03-26,25,1,20,0,46
@@ -357,6 +360,7 @@ Russia,Tanks,275,49,215,12,551,2022-04-24,NA,NA,NA,NA,NA
 Russia,Tanks,315,49,222,19,605,2022-05-05,NA,NA,NA,NA,NA
 Russia,Tanks,320,47,226,19,612,2022-05-06,NA,NA,NA,NA,NA
 Russia,Tanks,337,45,232,19,633,2022-05-08,NA,NA,NA,NA,NA
+Russia,Tanks,337,45,233,20,635,2022-05-09,NA,NA,NA,NA,NA
 Russia,Towed Artillery,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Towed Artillery,4,5,23,2,34,2022-03-19,4,5,23,2,34
 Russia,Towed Artillery,8,5,26,2,41,2022-03-26,4,0,3,0,7
