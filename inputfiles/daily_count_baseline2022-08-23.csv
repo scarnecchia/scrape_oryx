@@ -129,6 +129,7 @@ Russia,All Types,3355,317,1429,120,5221,2022-08-18,NA,NA,NA,NA,NA
 Russia,All Types,3362,317,1430,120,5229,2022-08-19,NA,NA,NA,NA,NA
 Russia,All Types,3371,317,1432,120,5240,2022-08-20,NA,NA,NA,NA,NA
 Russia,All Types,3378,317,1432,120,5247,2022-08-21,NA,NA,NA,NA,NA
+Russia,All Types,3379,315,1425,122,5241,2022-08-22,NA,NA,NA,NA,NA
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-03-19,0,0,0,0,0
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-03-26,0,0,0,0,0
@@ -227,6 +228,7 @@ Russia,Armoured Fighting Vehicles,348,32,122,6,508,2022-08-17,NA,NA,NA,NA,NA
 Russia,Armoured Fighting Vehicles,351,32,122,6,511,2022-08-18,NA,NA,NA,NA,NA
 Russia,Armoured Fighting Vehicles,353,32,122,6,513,2022-08-20,NA,NA,NA,NA,NA
 Russia,Armoured Fighting Vehicles,354,31,123,6,514,2022-08-21,NA,NA,NA,NA,NA
+Russia,Armoured Fighting Vehicles,344,29,123,6,502,2022-08-22,NA,NA,NA,NA,NA
 Russia,Armoured Personnel Carriers,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Armoured Personnel Carriers,24,14,38,0,76,2022-03-19,24,14,38,0,76
 Russia,Armoured Personnel Carriers,19,17,40,0,76,2022-03-26,-5,3,2,0,0
@@ -483,6 +485,7 @@ Russia,Infantry Fighting Vehicles,671,72,264,22,1029,2022-08-18,NA,NA,NA,NA,NA
 Russia,Infantry Fighting Vehicles,671,72,265,22,1030,2022-08-19,NA,NA,NA,NA,NA
 Russia,Infantry Fighting Vehicles,674,72,265,22,1033,2022-08-20,NA,NA,NA,NA,NA
 Russia,Infantry Fighting Vehicles,676,72,265,22,1035,2022-08-21,NA,NA,NA,NA,NA
+Russia,Infantry Fighting Vehicles,697,72,256,22,1047,2022-08-22,NA,NA,NA,NA,NA
 Russia,Infantry Mobility Vehicles,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Infantry Mobility Vehicles,29,5,16,2,52,2022-03-19,29,5,16,2,52
 Russia,Infantry Mobility Vehicles,36,5,20,2,63,2022-03-26,7,0,4,0,11
@@ -566,6 +569,7 @@ Russia,Mine-Resistant Ambush Protected,15,3,8,3,29,2022-06-30,NA,NA,NA,NA,NA
 Russia,Mine-Resistant Ambush Protected,16,3,8,3,30,2022-07-19,NA,NA,NA,NA,NA
 Russia,Mine-Resistant Ambush Protected,17,3,8,3,31,2022-07-28,NA,NA,NA,NA,NA
 Russia,Mine-Resistant Ambush Protected,17,4,8,3,32,2022-08-04,NA,NA,NA,NA,NA
+Russia,Mine-Resistant Ambush Protected,16,4,8,3,31,2022-08-22,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Multiple Rocket Launchers,14,4,12,0,30,2022-03-19,14,4,12,0,30
 Russia,Multiple Rocket Launchers,15,5,14,0,34,2022-03-26,1,1,2,0,4
@@ -815,6 +819,7 @@ Russia,Tanks,586,50,282,37,955,2022-08-17,NA,NA,NA,NA,NA
 Russia,Tanks,590,51,283,37,961,2022-08-18,NA,NA,NA,NA,NA
 Russia,Tanks,593,51,283,37,964,2022-08-19,NA,NA,NA,NA,NA
 Russia,Tanks,597,51,285,37,970,2022-08-20,NA,NA,NA,NA,NA
+Russia,Tanks,594,50,286,38,968,2022-08-22,NA,NA,NA,NA,NA
 Russia,Towed Artillery,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Towed Artillery,4,5,23,2,34,2022-03-19,4,5,23,2,34
 Russia,Towed Artillery,8,5,26,2,41,2022-03-26,4,0,3,0,7
