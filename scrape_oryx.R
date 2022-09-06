@@ -14,7 +14,7 @@ if (Sys.info()["sysname"] == "Linux") {
 }
 
 library(renv)
-renv::restore()
+renv::restore(prompt = FALSE)
 library(rvest)
 library(dplyr)
 library(tidyr)
@@ -60,7 +60,8 @@ total_by_type <- totals_by_type() %>%
 daily_count <- daily_count() %>%
   readr::write_csv(., file = "outputfiles/daily_count.csv")
 
-rmarkdown::render("index.Rmd")
+#rmarkdown::render("index.Rmd")
+quarto::quarto_render("index.qmd")
 
 # logr::log_code()
 # logr::log_close()
