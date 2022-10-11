@@ -180,6 +180,7 @@ Russia,All Types,4136,308,2209,158,6811,2022-10-07,NA,NA,NA,NA,NA
 Russia,All Types,4149,308,2235,158,6850,2022-10-08,NA,NA,NA,NA,NA
 Russia,All Types,4163,307,2253,160,6883,2022-10-09,NA,NA,NA,NA,NA
 Russia,All Types,4190,307,2279,161,6937,2022-10-10,NA,NA,NA,NA,NA
+Russia,All Types,4200,306,2279,161,6946,2022-10-11,NA,NA,NA,NA,NA
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-03-19,0,0,0,0,0
 Russia,Anti-Aircraft Guns,0,0,0,0,0,2022-03-26,0,0,0,0,0
@@ -392,6 +393,7 @@ Russia,Armoured Personnel Carriers,116,12,81,5,214,2022-10-06,NA,NA,NA,NA,NA
 Russia,Armoured Personnel Carriers,116,12,82,5,215,2022-10-07,NA,NA,NA,NA,NA
 Russia,Armoured Personnel Carriers,118,12,83,5,218,2022-10-09,NA,NA,NA,NA,NA
 Russia,Armoured Personnel Carriers,120,12,83,5,220,2022-10-10,NA,NA,NA,NA,NA
+Russia,Armoured Personnel Carriers,122,12,83,5,222,2022-10-11,NA,NA,NA,NA,NA
 Russia,Artillery Support Vehicles And Equipment,28,2,23,0,53,2022-08-14,NA,NA,NA,NA,NA
 Russia,Artillery Support Vehicles And Equipment,29,2,24,0,55,2022-09-13,NA,NA,NA,NA,NA
 Russia,Artillery Support Vehicles And Equipment,29,2,25,0,56,2022-09-14,NA,NA,NA,NA,NA
@@ -725,6 +727,7 @@ Russia,Infantry Fighting Vehicles,839,75,461,30,1405,2022-10-07,NA,NA,NA,NA,NA
 Russia,Infantry Fighting Vehicles,845,75,465,30,1415,2022-10-08,NA,NA,NA,NA,NA
 Russia,Infantry Fighting Vehicles,851,75,473,30,1429,2022-10-09,NA,NA,NA,NA,NA
 Russia,Infantry Fighting Vehicles,859,76,476,31,1442,2022-10-10,NA,NA,NA,NA,NA
+Russia,Infantry Fighting Vehicles,861,76,476,31,1444,2022-10-11,NA,NA,NA,NA,NA
 Russia,Infantry Mobility Vehicles,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Infantry Mobility Vehicles,29,5,16,2,52,2022-03-19,29,5,16,2,52
 Russia,Infantry Mobility Vehicles,36,5,20,2,63,2022-03-26,7,0,4,0,11
@@ -777,6 +780,7 @@ Russia,Infantry Mobility Vehicles,94,1,44,2,141,2022-10-03,NA,NA,NA,NA,NA
 Russia,Infantry Mobility Vehicles,95,1,44,2,142,2022-10-05,NA,NA,NA,NA,NA
 Russia,Infantry Mobility Vehicles,95,1,45,2,143,2022-10-07,NA,NA,NA,NA,NA
 Russia,Infantry Mobility Vehicles,94,1,46,2,143,2022-10-08,NA,NA,NA,NA,NA
+Russia,Infantry Mobility Vehicles,94,1,47,2,144,2022-10-11,NA,NA,NA,NA,NA
 Russia,Jammers And Deception Systems,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Jammers And Deception Systems,1,0,0,2,3,2022-03-19,1,0,0,2,3
 Russia,Jammers And Deception Systems,2,0,0,2,4,2022-03-26,1,0,0,0,1
@@ -841,6 +845,7 @@ Russia,Mine-Resistant Ambush Protected,19,2,11,4,36,2022-09-28,NA,NA,NA,NA,NA
 Russia,Mine-Resistant Ambush Protected,20,2,11,4,37,2022-10-04,NA,NA,NA,NA,NA
 Russia,Mine-Resistant Ambush Protected,22,2,11,4,39,2022-10-07,NA,NA,NA,NA,NA
 Russia,Mine-Resistant Ambush Protected,23,2,11,4,40,2022-10-10,NA,NA,NA,NA,NA
+Russia,Mine-Resistant Ambush Protected,23,1,10,4,38,2022-10-11,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Multiple Rocket Launchers,14,4,12,0,30,2022-03-19,14,4,12,0,30
 Russia,Multiple Rocket Launchers,15,5,14,0,34,2022-03-26,1,1,2,0,4
@@ -891,6 +896,7 @@ Russia,Multiple Rocket Launchers,68,2,44,4,118,2022-10-04,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,70,2,44,4,120,2022-10-06,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,73,2,46,4,125,2022-10-07,NA,NA,NA,NA,NA
 Russia,Multiple Rocket Launchers,73,2,47,4,126,2022-10-08,NA,NA,NA,NA,NA
+Russia,Multiple Rocket Launchers,76,2,47,4,129,2022-10-11,NA,NA,NA,NA,NA
 Russia,Naval Ships,1,0,0,0,1,2022-03-26,0,0,0,0,0
 Russia,Naval Ships,1,0,0,0,1,2022-03-27,0,0,0,0,0
 Russia,Naval Ships,1,0,0,2,3,2022-03-29,0,0,0,2,2
@@ -1027,6 +1033,7 @@ Russia,Self-Propelled Artillery,108,13,92,6,219,2022-10-07,NA,NA,NA,NA,NA
 Russia,Self-Propelled Artillery,109,13,92,6,220,2022-10-08,NA,NA,NA,NA,NA
 Russia,Self-Propelled Artillery,110,13,92,6,221,2022-10-09,NA,NA,NA,NA,NA
 Russia,Self-Propelled Artillery,112,13,92,6,223,2022-10-10,NA,NA,NA,NA,NA
+Russia,Self-Propelled Artillery,115,13,92,6,226,2022-10-11,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Surface-To-Air Missile Systems,17,7,12,1,37,2022-03-19,17,7,12,1,37
 Russia,Surface-To-Air Missile Systems,20,7,12,1,40,2022-03-26,3,0,0,0,3
@@ -1055,6 +1062,7 @@ Russia,Surface-To-Air Missile Systems,40,8,22,2,72,2022-09-10,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,41,8,22,2,73,2022-09-28,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,42,8,22,2,74,2022-10-09,NA,NA,NA,NA,NA
 Russia,Surface-To-Air Missile Systems,42,8,23,2,75,2022-10-10,NA,NA,NA,NA,NA
+Russia,Surface-To-Air Missile Systems,43,8,22,2,75,2022-10-11,NA,NA,NA,NA,NA
 Russia,Tanks,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Tanks,103,41,106,4,254,2022-03-19,103,41,106,4,254
 Russia,Tanks,128,42,126,4,300,2022-03-26,25,1,20,0,46
@@ -1374,6 +1382,7 @@ Russia,"Trucks, Vehicles and Jeeps",1254,54,422,31,1761,2022-10-07,NA,NA,NA,NA,N
 Russia,"Trucks, Vehicles and Jeeps",1256,54,427,31,1768,2022-10-08,NA,NA,NA,NA,NA
 Russia,"Trucks, Vehicles and Jeeps",1259,54,428,32,1773,2022-10-09,NA,NA,NA,NA,NA
 Russia,"Trucks, Vehicles and Jeeps",1261,54,434,32,1781,2022-10-10,NA,NA,NA,NA,NA
+Russia,"Trucks, Vehicles and Jeeps",1262,54,438,32,1786,2022-10-11,NA,NA,NA,NA,NA
 Russia,Unmanned Aerial Vehicles,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Russia,Unmanned Aerial Vehicles,6,0,0,0,6,2022-03-19,6,0,0,0,6
 Russia,Unmanned Aerial Vehicles,11,0,0,0,11,2022-03-26,5,0,0,0,5
@@ -1605,6 +1614,7 @@ Ukraine,All Types,982,57,615,49,1703,2022-10-07,NA,NA,NA,NA,NA
 Ukraine,All Types,989,57,617,51,1714,2022-10-08,NA,NA,NA,NA,NA
 Ukraine,All Types,1003,69,619,57,1748,2022-10-09,NA,NA,NA,NA,NA
 Ukraine,All Types,1032,70,620,58,1780,2022-10-10,NA,NA,NA,NA,NA
+Ukraine,All Types,1043,62,625,58,1788,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,Anti-Aircraft Guns,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Ukraine,Anti-Aircraft Guns,0,0,0,0,0,2022-03-19,0,0,0,0,0
 Ukraine,Anti-Aircraft Guns,0,0,0,0,0,2022-03-26,0,0,0,0,0
@@ -1720,6 +1730,7 @@ Ukraine,Armoured Personnel Carriers,64,3,46,8,121,2022-10-07,NA,NA,NA,NA,NA
 Ukraine,Armoured Personnel Carriers,65,3,47,10,125,2022-10-08,NA,NA,NA,NA,NA
 Ukraine,Armoured Personnel Carriers,62,4,50,10,126,2022-10-09,NA,NA,NA,NA,NA
 Ukraine,Armoured Personnel Carriers,65,6,50,10,131,2022-10-10,NA,NA,NA,NA,NA
+Ukraine,Armoured Personnel Carriers,66,6,51,10,133,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,Artillery Support Vehicles And Equipment,4,0,6,1,11,2022-08-08,NA,NA,NA,NA,NA
 Ukraine,Artillery Support Vehicles And Equipment,5,0,6,1,12,2022-08-14,NA,NA,NA,NA,NA
 Ukraine,Artillery Support Vehicles And Equipment,6,0,6,1,13,2022-09-01,NA,NA,NA,NA,NA
@@ -1901,6 +1912,7 @@ Ukraine,Infantry Mobility Vehicles,60,3,77,3,143,2022-10-06,NA,NA,NA,NA,NA
 Ukraine,Infantry Mobility Vehicles,62,3,77,3,145,2022-10-08,NA,NA,NA,NA,NA
 Ukraine,Infantry Mobility Vehicles,64,3,80,5,152,2022-10-09,NA,NA,NA,NA,NA
 Ukraine,Infantry Mobility Vehicles,64,4,81,4,153,2022-10-10,NA,NA,NA,NA,NA
+Ukraine,Infantry Mobility Vehicles,67,3,84,4,158,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,Jammers And Deception Systems,0,0,1,0,1,2022-06-06,NA,NA,NA,NA,NA
 Ukraine,"Man-Portable Air Defence Systems
 ",0,0,0,0,0,2022-02-23,0,0,0,0,0
@@ -2027,6 +2039,7 @@ Ukraine,Self-Propelled Artillery,30,1,15,9,55,2022-09-28,NA,NA,NA,NA,NA
 Ukraine,Self-Propelled Artillery,30,1,15,10,56,2022-10-02,NA,NA,NA,NA,NA
 Ukraine,Self-Propelled Artillery,31,1,15,10,57,2022-10-08,NA,NA,NA,NA,NA
 Ukraine,Self-Propelled Artillery,30,1,16,10,57,2022-10-09,NA,NA,NA,NA,NA
+Ukraine,Self-Propelled Artillery,31,1,16,10,58,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,"Surface-To-Air Missile Systems
 ",0,0,0,0,0,2022-02-23,0,0,0,0,0
 Ukraine,"Surface-To-Air Missile Systems
@@ -2055,6 +2068,8 @@ Ukraine,"Surface-To-Air Missile Systems
 ",38,1,6,0,45,2022-09-01,NA,NA,NA,NA,NA
 Ukraine,"Surface-To-Air Missile Systems
 ",39,1,6,0,46,2022-09-13,NA,NA,NA,NA,NA
+Ukraine,"Surface-To-Air Missile Systems
+",40,1,6,0,47,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,"Surface-To-Air Missile Systems
 
 ",15,2,0,0,17,2022-03-26,0,0,0,0,0
@@ -2140,6 +2155,7 @@ Ukraine,Tanks,154,10,109,6,279,2022-10-06,NA,NA,NA,NA,NA
 Ukraine,Tanks,155,10,110,6,281,2022-10-08,NA,NA,NA,NA,NA
 Ukraine,Tanks,158,14,110,7,289,2022-10-09,NA,NA,NA,NA,NA
 Ukraine,Tanks,160,14,110,7,291,2022-10-10,NA,NA,NA,NA,NA
+Ukraine,Tanks,159,14,110,7,290,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,Towed Artillery,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Ukraine,Towed Artillery,2,3,11,0,16,2022-03-19,2,3,11,0,16
 Ukraine,Towed Artillery,4,3,11,3,21,2022-03-26,2,0,0,3,5
@@ -2219,6 +2235,7 @@ Ukraine,"Trucks, Vehicles and Jeeps",189,5,150,6,350,2022-09-29,NA,NA,NA,NA,NA
 Ukraine,"Trucks, Vehicles and Jeeps",191,5,150,6,352,2022-10-05,NA,NA,NA,NA,NA
 Ukraine,"Trucks, Vehicles and Jeeps",192,5,150,7,354,2022-10-06,NA,NA,NA,NA,NA
 Ukraine,"Trucks, Vehicles and Jeeps",196,5,150,7,358,2022-10-10,NA,NA,NA,NA,NA
+Ukraine,"Trucks, Vehicles and Jeeps",199,5,150,7,361,2022-10-11,NA,NA,NA,NA,NA
 Ukraine,Unmanned Aerial Vehicles,0,0,0,0,0,2022-02-23,0,0,0,0,0
 Ukraine,Unmanned Aerial Vehicles,5,0,0,0,5,2022-03-19,5,0,0,0,5
 Ukraine,Unmanned Aerial Vehicles,7,0,0,0,7,2022-03-26,2,0,0,0,2
